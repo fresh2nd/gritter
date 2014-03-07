@@ -57,10 +57,10 @@ module Gritter
           value.each do |gflash_value|
             gritter_options = { :image => key, :title => titles[key], :nodom_wrap => nodom_wrap }
             if gflash_value.is_a?(Hash)
-              text = gflash_value.has_key?(:value) ? (gflash_value[:value] and gflash_value.delete(:value)) : nil
+              text = gflash_value.has_key?(:value) ? (gflash_value[:value] and gflash_value.delete(:value).to_s) : nil
               gritter_options.merge!(gflash_value)
             else
-              text = gflash_value
+              text = gflash_value.to_s
             end
             flashes.push(add_gritter(text, gritter_options))
           end
